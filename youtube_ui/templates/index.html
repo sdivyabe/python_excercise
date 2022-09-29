@@ -1,0 +1,161 @@
+{% block title %}
+<h1><u>Youtube Thumbnail</u></h1>
+{% endblock title %} {% block content %}
+<link
+  rel="stylesheet"
+  type="text/css"
+  href="{{url_for('static', filename='css/style.css')}}"
+/>
+<nav class="flex-div">
+  <div class="nav-left flex-div">
+    <img src="static/images/menu.png" alt="menu bar" class="menu-icon" />
+    <img src="static/images/logo.png" alt="logo" class="logo" />
+  </div>
+  <div class="nav-middle flex-div">
+    <div class="search-box flex-div">
+      <input type="text" placeholder="Search" />
+      <img src="static/images/search.png" alt="search bar" />
+    </div>
+    <img src="static/images/voice-search.png" alt="mic icon" class="mic-icon" />
+  </div>
+  <div class="nav-right flex-div">
+    <img src="static/images/upload.png" alt="upload icon" />
+    <img src="static/images/more.png" alt="more icon" />
+    <img src="static/images/notification.png" alt="notification icon" />
+    <img class="user-icon" src="static/images/Jack.png" alt="user icon" />
+  </div>
+</nav>
+<!-- sidebar -->
+<div class="sidebar">
+  <div class="shortcut-links">
+    <a href=""
+      ><img src="static/images/home.png" alt="" />
+      <p>Home</p></a
+    >
+    <a href=""
+      ><img src="static/images/explore.png" alt="" />
+      <p>Explore</p></a
+    >
+    <a href=""
+      ><img src="static/images/subscriprion.png" alt="" />
+      <p>Subscription</p></a
+    >
+    <a href=""
+      ><img src="static/images/library.png" alt="" />
+      <p>Library</p></a
+    >
+    <a href=""
+      ><img src="static/images/history.png" alt="" />
+      <p>History</p></a
+    >
+    <a href=""
+      ><img src="static/images/playlist.png" alt="" />
+      <p>Playlist</p></a
+    >
+    <a href=""
+      ><img src="static/images/messages.png" alt="" />
+      <p>Messages</p></a
+    >
+    <a href=""
+      ><img src="static/images/show-more.png" alt="" />
+      <p>Show More</p></a
+    >
+    <hr />
+  </div>
+  <div class="subscribed-list">
+    <h3>Subscribed</h3>
+    <a href=""
+      ><img src="static/images/Jack.png" alt="" />
+      <p>Python</p></a
+    >
+    <a href=""
+      ><img src="static/images/simon.png" alt="" />
+      <p>Java</p></a
+    >
+    <a href=""
+      ><img src="static/images/tom.png" alt="" />
+      <p>Javascript</p></a
+    >
+    <a href=""
+      ><img src="static/images/megan.png" alt="" />
+      <p>C</p></a
+    >
+    <a href=""
+      ><img src="static/images/cameron.png" alt="" />
+      <p>C++</p></a
+    >
+    <a href=""
+      ><img src="static/images/Jack.png" alt="" />
+      <p>Mongo</p></a
+    >
+    <a href=""
+      ><img src="static/images/Jack.png" alt="" />
+      <p>React</p></a
+    >
+  </div>
+</div>
+<!-- main -->
+<div class="container">
+  <div class="banner">
+    <img src="static/images/banner.png" alt="banner" />
+  </div>
+  <section>
+    <div class="section-div">
+      <h2>Download Thumbnail</h2>
+      <div class="url">
+        <div class="title">Enter Youtube URL</div>
+        <div class="field">
+          <input type="text" placeholder="Enter the Url" />
+          <div class="line"></div>
+        </div>
+      </div>
+      <div class="preview">
+        <img src="" alt="thumbnail" class="img" />
+        <h4>Youtube Thumbnail Preview</h4>
+      </div>
+    </div>
+  </section>
+  <div class="list-container">
+    <div class="vid-list">
+      {% for row in datas %}
+      <a href="{{row.NEXTPAGE}}" target="_blank"
+        ><img src="static/images/thumbnail3.png" class="thumbnail"
+      /></a>
+      <div class="flex-div">
+        <img src="static/images/Jack.png" />
+        <div class="vid-info">
+          <a href="static/videoplayer.html"
+            >This is frent end Youtube UI creation Tutorial</a
+          >
+          <p>{{row.NAME}}</p>
+          <p>1k Views &bull; 5 hours ago</p>
+        </div>
+      </div>
+      <div
+        style="
+          display: flex;
+          align-content: center;
+          justify-content: space-between;
+          align-items: center;
+          padding: 1%;
+        "
+      >
+        <a href="{{url_for('edit_channel',id=row.id)}}" class="btn-class"
+          >Edit</a
+        >
+        <a
+          href="{{url_for('delete_channel',id=row.id)}}"
+          style="width: 100px"
+          class="btn-danger"
+          >Delete</a
+        >
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+  <div style="justify-content: right; text-align: right; padding: 1%">
+    <a href="{{url_for('add_channel')}}" class="btn-class">Add Channel</a>
+  </div>
+</div>
+<script src="{{url_for('static', filename='js/script.js')}}"></script>
+{% endblock content %}

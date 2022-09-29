@@ -1,0 +1,37 @@
+{% block title %}<h1>Edit Page </h1>{% endblock title %}
+{% block content %}
+<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/style.css')}}">
+<form action="{{url_for('edit_channel', id=datas.ID)}}" method="POST">
+  <div class="input-div">
+    <input
+      type="url"
+      name="nextPage"
+      id="nextPage"
+      required="1"
+      placeholder="Enter the Url"
+      value="{{datas.NEXTPAGE}}"
+      class="input-style"
+    />
+    <br /><br />
+    <input
+      type="text"
+      name="name"
+      id="name"
+      required="1"
+      placeholder="Enter the Name"
+      value="{{datas.NAME}}"
+      class="input-style"
+    />
+    <br /><br />
+    <!-- <input
+  type="text"
+  name="name"
+  id="name"
+  required="1"
+  placeholder="Enter the Name"
+  class="input-style"
+/> -->
+<input type="submit" value="Submit" class="btn-type"/>
+  </div>
+</form>
+{% endblock content %}
